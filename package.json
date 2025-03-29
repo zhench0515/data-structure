@@ -1,0 +1,26 @@
+{
+  "name": "data-structure",
+  "version": "1.0.0",
+  "description": "JavaScript 模拟常见的数据结构",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "anywhere -p 8000 -f ./index.html"
+  },
+  "keywords": [
+    "数据结构",
+    "链表",
+    "字典",
+    "堆栈",
+    "集合",
+    "队列",
+    "哈希表",
+    "二叉树",
+    "图"
+  ],
+  "author": "zhencanhua",
+  "license": "ISC",
+  "dependencies": {
+    "anywhere": "^1.6.0"
+  }
+}
