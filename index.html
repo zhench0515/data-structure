@@ -9,9 +9,32 @@
   <body>
     <div>
       <ul>
-        <li>链表（Linked List）测试</li>
+        <li>
+          <a href="#LinkedList" onclick="testLog('LinkedList')">链表（Linked List）测试</a>
+        </li>
+        <li>
+          <a href="#DoublyLinkedList" onclick="testLog('DoublyLinkedList')">双向链表</a>
+        </li>
       </ul>
     </div>
   </body>
-  <script type="module" src="./test/LinkedList.js"></script>
+  <!-- <script type="module" src="./test/DoublyLinkedList.js"></script> -->
+  <script>
+    function testLog(name) {
+      // 移除之前的测试脚本
+      removeScript()
+      // 添加新的测试脚本
+      const scriptEl = document.createElement('script')
+      scriptEl.className = 'test-log'
+      scriptEl.src = `./test/${name}.js?${new Date().getTime()}`
+      scriptEl.type = 'module'
+      document.body.appendChild(scriptEl)
+    }
+    function removeScript() {
+      const scriptEls = document.querySelectorAll('.test-log')
+      for (let i = 0; i < scriptEls.length; i++) {
+        document.body.removeChild(scriptEls[i])
+      }
+    }
+  </script>
 </html>

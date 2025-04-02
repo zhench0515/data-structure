@@ -5,8 +5,8 @@
  * @description: 创建链表的类，实现链表的基本操作：添加节点、删除节点、查找节点、插入节点、打印链表、链表大小、是否为空等
  */
 
-import Node from './Node.js'
-import { isEqual } from '../utils.js'
+import Node from '../../models/Node.js'
+import { isEqual } from '../../utils/utils.js'
 
 export default class LinkedList {
   constructor(options = { isEqual: isEqual }) {
@@ -14,7 +14,7 @@ export default class LinkedList {
     this.size = 0 // 链表大小
     this.options = options
   }
-  // 添加节点
+  // 尾部添加节点
   push(val) {
     if (arguments.length === 0) return this.size
     const node = new Node(val)
@@ -30,6 +30,43 @@ export default class LinkedList {
     }
     this.size++
     return this.size
+  }
+  // 头部添加节点
+  unshift(val) {
+    if (arguments.length === 0) return this.size
+    const node = new Node(val)
+    node.next = this.head
+    this.head = node
+    this.size++
+    return this.size
+  }
+  // 头部删除节点
+  shift() {
+    if (this.isEmpty()) return undefined
+    const current = this.head
+    this.head = current.next
+    this.size--
+    return current.value
+  }
+  // 尾部删除节点
+  pop() {
+    if (this.isEmpty()) return undefined
+    if (this.size === 1) {
+      const current = this.head
+      this.head = null
+      this.size--
+      return current.value
+    } else {
+      let current = this.head
+      let previous = null
+      while (current.next) {
+        previous = current
+        current = current.next
+      }
+      previous.next = null
+      this.size--
+      return current.value
+    }
   }
   // 返回节点位置
   indexOf(val) {
