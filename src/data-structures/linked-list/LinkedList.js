@@ -68,7 +68,7 @@ export default class LinkedList {
       return current.value
     }
   }
-  // 返回节点位置
+  // 返回匹配值的第一个位置
   indexOf(val) {
     if (arguments.length === 0) return -1
     let current = this.head
@@ -107,7 +107,7 @@ export default class LinkedList {
   }
   // 删除节点，删除匹配的第一个节点
   remove(val) {
-    if (arguments.length === 0) return this.size
+    if (arguments.length === 0) return undefined
     let index = this.indexOf(val)
     if (index === -1) return this.size
     return this.removeAt(index)
@@ -115,10 +115,9 @@ export default class LinkedList {
 
   // 插入节点
   insert(index, val) {
-    if (arguments.length === 0) return this.size
-    if (arguments[1] === undefined) return this.size
-
-    if (index < 0 || index > this.size) return this.size
+    if (arguments.length < 2) return undefined
+    if (typeof arguments[0] !== 'number') return undefined
+    if (index < 0 || index > this.size) return undefined
     const node = new Node(val)
     // 插入头部
     if (index === 0) {
