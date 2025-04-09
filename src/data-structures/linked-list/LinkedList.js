@@ -136,7 +136,7 @@ export default class LinkedList {
   // 根据位置获取节点
   getNodeAt(index) {
     if (arguments.length === 0) return undefined
-    if (index < 0 || index > this.size) return undefined
+    if (index < 0 || index >= this.size) return undefined
     let current = this.head
     for (let i = 0; i < index; i++) {
       current = current.next
@@ -149,7 +149,7 @@ export default class LinkedList {
   }
   // 判断链表是否为空
   isEmpty() {
-    return this.size === 0
+    return this.size === 0 || !this.head
   }
   // 清空链表
   clear() {
@@ -173,7 +173,7 @@ export default class LinkedList {
   }
   // 获取尾节点
   getTail() {
-    if (this.isEmpty()) return undefined
+    if (this.isEmpty()) return null
     return this.getNodeAt(this.size - 1)
   }
   // 链表反转
